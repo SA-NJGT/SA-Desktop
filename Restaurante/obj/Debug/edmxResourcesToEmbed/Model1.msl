@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="billy_jackModelStoreContainer" CdmEntityContainer="billy_jackEntities">
+    <EntitySetMapping Name="tabela_categoria">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_categoria">
+        <MappingFragment StoreEntitySet="tabela_categoria">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome_categoria" ColumnName="nome_categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_dados_pessoais">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_dados_pessoais">
+        <MappingFragment StoreEntitySet="tabela_dados_pessoais">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="rua" ColumnName="rua" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="id_tipo_pessoa" ColumnName="id_tipo_pessoa" />
+          <ScalarProperty Name="id_imagem" ColumnName="id_imagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_identificacao_produto">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_identificacao_produto">
+        <MappingFragment StoreEntitySet="tabela_identificacao_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+          <ScalarProperty Name="codbarras" ColumnName="codbarras" />
+          <ScalarProperty Name="id_imagem" ColumnName="id_imagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_imagem">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_imagem">
+        <MappingFragment StoreEntitySet="tabela_imagem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_ingredientes">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_ingredientes">
+        <MappingFragment StoreEntitySet="tabela_ingredientes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+          <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+          <ScalarProperty Name="nome_ingrediente" ColumnName="nome_ingrediente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_itens_produtos">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_itens_produtos">
+        <MappingFragment StoreEntitySet="tabela_itens_produtos">
+          <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_mesas">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_mesas">
+        <MappingFragment StoreEntitySet="tabela_mesas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="capacidade" ColumnName="capacidade" />
+          <ScalarProperty Name="disponivel" ColumnName="disponivel" />
+          <ScalarProperty Name="observacao" ColumnName="observacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_pedidos">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_pedidos">
+        <MappingFragment StoreEntitySet="tabela_pedidos">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_mesa" ColumnName="id_mesa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_produto">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_produto">
+        <MappingFragment StoreEntitySet="tabela_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="id_identificacao" ColumnName="id_identificacao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_tipo_pessoa">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_tipo_pessoa">
+        <MappingFragment StoreEntitySet="tabela_tipo_pessoa">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo_pessoa" ColumnName="tipo_pessoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_tipo_usuario">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_tipo_usuario">
+        <MappingFragment StoreEntitySet="tabela_tipo_usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tabela_usuario">
+      <EntityTypeMapping TypeName="billy_jackModel.tabela_usuario">
+        <MappingFragment StoreEntitySet="tabela_usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="billy_jackModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tabela_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_categoria" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_dados_pessoais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cpf" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="cep" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="rua" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="complemento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="uf" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_tipo_pessoa" Type="int" Nullable="false" />
+          <Property Name="id_imagem" Type="int" />
+        </EntityType>
+        <EntityType Name="tabela_identificacao_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="referencia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="codbarras" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_imagem" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_imagem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="varchar(max)" />
+          <Property Name="Data" Type="image" />
+        </EntityType>
+        <EntityType Name="tabela_ingredientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+          <Property Name="preco_venda" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nome_ingrediente" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_itens_produtos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+          <Property Name="id_produto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quantidade" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_mesas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="capacidade" Type="int" Nullable="false" />
+          <Property Name="disponivel" Type="bit" Nullable="false" />
+          <Property Name="observacao" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="id_mesa" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="preco" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_identificacao" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_tipo_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo_pessoa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_tipo_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="login" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="senha" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="tipo_usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tabela_dados_pessoais_imagem">
+          <End Role="tabela_imagem" Type="Self.tabela_imagem" Multiplicity="0..1" />
+          <End Role="tabela_dados_pessoais" Type="Self.tabela_dados_pessoais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_imagem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_dados_pessoais">
+              <PropertyRef Name="id_imagem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_dados_pessoais_tipo_pessoa">
+          <End Role="tabela_tipo_pessoa" Type="Self.tabela_tipo_pessoa" Multiplicity="1" />
+          <End Role="tabela_dados_pessoais" Type="Self.tabela_dados_pessoais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_tipo_pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_dados_pessoais">
+              <PropertyRef Name="id_tipo_pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_identificacao_produto_categoria">
+          <End Role="tabela_categoria" Type="Self.tabela_categoria" Multiplicity="1" />
+          <End Role="tabela_identificacao_produto" Type="Self.tabela_identificacao_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_identificacao_produto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_itens_produtos_pedido">
+          <End Role="tabela_pedidos" Type="Self.tabela_pedidos" Multiplicity="1" />
+          <End Role="tabela_itens_produtos" Type="Self.tabela_itens_produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_pedidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_itens_produtos">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_itens_produtos_produto">
+          <End Role="tabela_produto" Type="Self.tabela_produto" Multiplicity="1" />
+          <End Role="tabela_itens_produtos" Type="Self.tabela_itens_produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_itens_produtos">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_pedidos_mesas">
+          <End Role="tabela_mesas" Type="Self.tabela_mesas" Multiplicity="1" />
+          <End Role="tabela_pedidos" Type="Self.tabela_pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_mesas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_pedidos">
+              <PropertyRef Name="id_mesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_produto_identificacao">
+          <End Role="tabela_identificacao_produto" Type="Self.tabela_identificacao_produto" Multiplicity="1" />
+          <End Role="tabela_produto" Type="Self.tabela_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_identificacao_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_produto">
+              <PropertyRef Name="id_identificacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_usuario_tipo_usuario">
+          <End Role="tabela_tipo_usuario" Type="Self.tabela_tipo_usuario" Multiplicity="1" />
+          <End Role="tabela_usuario" Type="Self.tabela_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_tipo_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_usuario">
+              <PropertyRef Name="tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="billy_jackModelStoreContainer">
+          <EntitySet Name="tabela_categoria" EntityType="Self.tabela_categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_dados_pessoais" EntityType="Self.tabela_dados_pessoais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_identificacao_produto" EntityType="Self.tabela_identificacao_produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_imagem" EntityType="Self.tabela_imagem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_ingredientes" EntityType="Self.tabela_ingredientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_itens_produtos" EntityType="Self.tabela_itens_produtos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_mesas" EntityType="Self.tabela_mesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_pedidos" EntityType="Self.tabela_pedidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_produto" EntityType="Self.tabela_produto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_tipo_pessoa" EntityType="Self.tabela_tipo_pessoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_tipo_usuario" EntityType="Self.tabela_tipo_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabela_usuario" EntityType="Self.tabela_usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tabela_dados_pessoais_imagem" Association="Self.FK_tabela_dados_pessoais_imagem">
+            <End Role="tabela_imagem" EntitySet="tabela_imagem" />
+            <End Role="tabela_dados_pessoais" EntitySet="tabela_dados_pessoais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_dados_pessoais_tipo_pessoa" Association="Self.FK_tabela_dados_pessoais_tipo_pessoa">
+            <End Role="tabela_tipo_pessoa" EntitySet="tabela_tipo_pessoa" />
+            <End Role="tabela_dados_pessoais" EntitySet="tabela_dados_pessoais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_identificacao_produto_categoria" Association="Self.FK_tabela_identificacao_produto_categoria">
+            <End Role="tabela_categoria" EntitySet="tabela_categoria" />
+            <End Role="tabela_identificacao_produto" EntitySet="tabela_identificacao_produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_itens_produtos_pedido" Association="Self.FK_tabela_itens_produtos_pedido">
+            <End Role="tabela_pedidos" EntitySet="tabela_pedidos" />
+            <End Role="tabela_itens_produtos" EntitySet="tabela_itens_produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_itens_produtos_produto" Association="Self.FK_tabela_itens_produtos_produto">
+            <End Role="tabela_produto" EntitySet="tabela_produto" />
+            <End Role="tabela_itens_produtos" EntitySet="tabela_itens_produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_pedidos_mesas" Association="Self.FK_tabela_pedidos_mesas">
+            <End Role="tabela_mesas" EntitySet="tabela_mesas" />
+            <End Role="tabela_pedidos" EntitySet="tabela_pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_produto_identificacao" Association="Self.FK_tabela_produto_identificacao">
+            <End Role="tabela_identificacao_produto" EntitySet="tabela_identificacao_produto" />
+            <End Role="tabela_produto" EntitySet="tabela_produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_usuario_tipo_usuario" Association="Self.FK_tabela_usuario_tipo_usuario">
+            <End Role="tabela_tipo_usuario" EntitySet="tabela_tipo_usuario" />
+            <End Role="tabela_usuario" EntitySet="tabela_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="billy_jackModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tabela_categoria">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tabela_identificacao_produto" Relationship="Self.FK_tabela_identificacao_produto_categoria" FromRole="tabela_categoria" ToRole="tabela_identificacao_produto" />
+        </EntityType>
+        <EntityType Name="tabela_dados_pessoais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cpf" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cep" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rua" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_tipo_pessoa" Type="Int32" Nullable="false" />
+          <Property Name="id_imagem" Type="Int32" />
+          <NavigationProperty Name="tabela_imagem" Relationship="Self.FK_tabela_dados_pessoais_imagem" FromRole="tabela_dados_pessoais" ToRole="tabela_imagem" />
+          <NavigationProperty Name="tabela_tipo_pessoa" Relationship="Self.FK_tabela_dados_pessoais_tipo_pessoa" FromRole="tabela_dados_pessoais" ToRole="tabela_tipo_pessoa" />
+        </EntityType>
+        <EntityType Name="tabela_identificacao_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="codbarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_imagem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tabela_categoria" Relationship="Self.FK_tabela_identificacao_produto_categoria" FromRole="tabela_identificacao_produto" ToRole="tabela_categoria" />
+          <NavigationProperty Name="tabela_produto" Relationship="Self.FK_tabela_produto_identificacao" FromRole="tabela_identificacao_produto" ToRole="tabela_produto" />
+        </EntityType>
+        <EntityType Name="tabela_imagem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="tabela_dados_pessoais" Relationship="Self.FK_tabela_dados_pessoais_imagem" FromRole="tabela_imagem" ToRole="tabela_dados_pessoais" />
+        </EntityType>
+        <EntityType Name="tabela_ingredientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <Property Name="preco_venda" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="nome_ingrediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tabela_itens_produtos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+            <PropertyRef Name="id_produto" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <Property Name="id_produto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quantidade" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tabela_pedidos" Relationship="Self.FK_tabela_itens_produtos_pedido" FromRole="tabela_itens_produtos" ToRole="tabela_pedidos" />
+          <NavigationProperty Name="tabela_produto" Relationship="Self.FK_tabela_itens_produtos_produto" FromRole="tabela_itens_produtos" ToRole="tabela_produto" />
+        </EntityType>
+        <EntityType Name="tabela_mesas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="capacidade" Type="Int32" Nullable="false" />
+          <Property Name="disponivel" Type="Boolean" Nullable="false" />
+          <Property Name="observacao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tabela_pedidos" Relationship="Self.FK_tabela_pedidos_mesas" FromRole="tabela_mesas" ToRole="tabela_pedidos" />
+        </EntityType>
+        <EntityType Name="tabela_pedidos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_mesa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tabela_itens_produtos" Relationship="Self.FK_tabela_itens_produtos_pedido" FromRole="tabela_pedidos" ToRole="tabela_itens_produtos" />
+          <NavigationProperty Name="tabela_mesas" Relationship="Self.FK_tabela_pedidos_mesas" FromRole="tabela_pedidos" ToRole="tabela_mesas" />
+        </EntityType>
+        <EntityType Name="tabela_produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="preco" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="id_identificacao" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tabela_identificacao_produto" Relationship="Self.FK_tabela_produto_identificacao" FromRole="tabela_produto" ToRole="tabela_identificacao_produto" />
+          <NavigationProperty Name="tabela_itens_produtos" Relationship="Self.FK_tabela_itens_produtos_produto" FromRole="tabela_produto" ToRole="tabela_itens_produtos" />
+        </EntityType>
+        <EntityType Name="tabela_tipo_pessoa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo_pessoa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tabela_dados_pessoais" Relationship="Self.FK_tabela_dados_pessoais_tipo_pessoa" FromRole="tabela_tipo_pessoa" ToRole="tabela_dados_pessoais" />
+        </EntityType>
+        <EntityType Name="tabela_tipo_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tabela_usuario" Relationship="Self.FK_tabela_usuario_tipo_usuario" FromRole="tabela_tipo_usuario" ToRole="tabela_usuario" />
+        </EntityType>
+        <EntityType Name="tabela_usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="senha" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tipo_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tabela_tipo_usuario" Relationship="Self.FK_tabela_usuario_tipo_usuario" FromRole="tabela_usuario" ToRole="tabela_tipo_usuario" />
+        </EntityType>
+        <Association Name="FK_tabela_identificacao_produto_categoria">
+          <End Role="tabela_categoria" Type="Self.tabela_categoria" Multiplicity="1" />
+          <End Role="tabela_identificacao_produto" Type="Self.tabela_identificacao_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_categoria">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_identificacao_produto">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_dados_pessoais_imagem">
+          <End Role="tabela_imagem" Type="Self.tabela_imagem" Multiplicity="0..1" />
+          <End Role="tabela_dados_pessoais" Type="Self.tabela_dados_pessoais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_imagem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_dados_pessoais">
+              <PropertyRef Name="id_imagem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_dados_pessoais_tipo_pessoa">
+          <End Role="tabela_tipo_pessoa" Type="Self.tabela_tipo_pessoa" Multiplicity="1" />
+          <End Role="tabela_dados_pessoais" Type="Self.tabela_dados_pessoais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_tipo_pessoa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_dados_pessoais">
+              <PropertyRef Name="id_tipo_pessoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_produto_identificacao">
+          <End Role="tabela_identificacao_produto" Type="Self.tabela_identificacao_produto" Multiplicity="1" />
+          <End Role="tabela_produto" Type="Self.tabela_produto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_identificacao_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_produto">
+              <PropertyRef Name="id_identificacao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_itens_produtos_pedido">
+          <End Role="tabela_pedidos" Type="Self.tabela_pedidos" Multiplicity="1" />
+          <End Role="tabela_itens_produtos" Type="Self.tabela_itens_produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_pedidos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_itens_produtos">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_itens_produtos_produto">
+          <End Role="tabela_produto" Type="Self.tabela_produto" Multiplicity="1" />
+          <End Role="tabela_itens_produtos" Type="Self.tabela_itens_produtos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_produto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_itens_produtos">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_pedidos_mesas">
+          <End Role="tabela_mesas" Type="Self.tabela_mesas" Multiplicity="1" />
+          <End Role="tabela_pedidos" Type="Self.tabela_pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_mesas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_pedidos">
+              <PropertyRef Name="id_mesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tabela_usuario_tipo_usuario">
+          <End Role="tabela_tipo_usuario" Type="Self.tabela_tipo_usuario" Multiplicity="1" />
+          <End Role="tabela_usuario" Type="Self.tabela_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tabela_tipo_usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tabela_usuario">
+              <PropertyRef Name="tipo_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="billy_jackEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tabela_categoria" EntityType="Self.tabela_categoria" />
+          <EntitySet Name="tabela_dados_pessoais" EntityType="Self.tabela_dados_pessoais" />
+          <EntitySet Name="tabela_identificacao_produto" EntityType="Self.tabela_identificacao_produto" />
+          <EntitySet Name="tabela_imagem" EntityType="Self.tabela_imagem" />
+          <EntitySet Name="tabela_ingredientes" EntityType="Self.tabela_ingredientes" />
+          <EntitySet Name="tabela_itens_produtos" EntityType="Self.tabela_itens_produtos" />
+          <EntitySet Name="tabela_mesas" EntityType="Self.tabela_mesas" />
+          <EntitySet Name="tabela_pedidos" EntityType="Self.tabela_pedidos" />
+          <EntitySet Name="tabela_produto" EntityType="Self.tabela_produto" />
+          <EntitySet Name="tabela_tipo_pessoa" EntityType="Self.tabela_tipo_pessoa" />
+          <EntitySet Name="tabela_tipo_usuario" EntityType="Self.tabela_tipo_usuario" />
+          <EntitySet Name="tabela_usuario" EntityType="Self.tabela_usuario" />
+          <AssociationSet Name="FK_tabela_identificacao_produto_categoria" Association="Self.FK_tabela_identificacao_produto_categoria">
+            <End Role="tabela_categoria" EntitySet="tabela_categoria" />
+            <End Role="tabela_identificacao_produto" EntitySet="tabela_identificacao_produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_dados_pessoais_imagem" Association="Self.FK_tabela_dados_pessoais_imagem">
+            <End Role="tabela_imagem" EntitySet="tabela_imagem" />
+            <End Role="tabela_dados_pessoais" EntitySet="tabela_dados_pessoais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_dados_pessoais_tipo_pessoa" Association="Self.FK_tabela_dados_pessoais_tipo_pessoa">
+            <End Role="tabela_tipo_pessoa" EntitySet="tabela_tipo_pessoa" />
+            <End Role="tabela_dados_pessoais" EntitySet="tabela_dados_pessoais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_produto_identificacao" Association="Self.FK_tabela_produto_identificacao">
+            <End Role="tabela_identificacao_produto" EntitySet="tabela_identificacao_produto" />
+            <End Role="tabela_produto" EntitySet="tabela_produto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_itens_produtos_pedido" Association="Self.FK_tabela_itens_produtos_pedido">
+            <End Role="tabela_pedidos" EntitySet="tabela_pedidos" />
+            <End Role="tabela_itens_produtos" EntitySet="tabela_itens_produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_itens_produtos_produto" Association="Self.FK_tabela_itens_produtos_produto">
+            <End Role="tabela_produto" EntitySet="tabela_produto" />
+            <End Role="tabela_itens_produtos" EntitySet="tabela_itens_produtos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_pedidos_mesas" Association="Self.FK_tabela_pedidos_mesas">
+            <End Role="tabela_mesas" EntitySet="tabela_mesas" />
+            <End Role="tabela_pedidos" EntitySet="tabela_pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tabela_usuario_tipo_usuario" Association="Self.FK_tabela_usuario_tipo_usuario">
+            <End Role="tabela_tipo_usuario" EntitySet="tabela_tipo_usuario" />
+            <End Role="tabela_usuario" EntitySet="tabela_usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="billy_jackModelStoreContainer" CdmEntityContainer="billy_jackEntities">
+          <EntitySetMapping Name="tabela_categoria">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_categoria">
+              <MappingFragment StoreEntitySet="tabela_categoria">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome_categoria" ColumnName="nome_categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_dados_pessoais">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_dados_pessoais">
+              <MappingFragment StoreEntitySet="tabela_dados_pessoais">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="cpf" ColumnName="cpf" />
+                <ScalarProperty Name="cep" ColumnName="cep" />
+                <ScalarProperty Name="rua" ColumnName="rua" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="complemento" ColumnName="complemento" />
+                <ScalarProperty Name="bairro" ColumnName="bairro" />
+                <ScalarProperty Name="cidade" ColumnName="cidade" />
+                <ScalarProperty Name="uf" ColumnName="uf" />
+                <ScalarProperty Name="id_tipo_pessoa" ColumnName="id_tipo_pessoa" />
+                <ScalarProperty Name="id_imagem" ColumnName="id_imagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_identificacao_produto">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_identificacao_produto">
+              <MappingFragment StoreEntitySet="tabela_identificacao_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="referencia" ColumnName="referencia" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="codbarras" ColumnName="codbarras" />
+                <ScalarProperty Name="id_imagem" ColumnName="id_imagem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_imagem">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_imagem">
+              <MappingFragment StoreEntitySet="tabela_imagem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_ingredientes">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_ingredientes">
+              <MappingFragment StoreEntitySet="tabela_ingredientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+                <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+                <ScalarProperty Name="nome_ingrediente" ColumnName="nome_ingrediente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_itens_produtos">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_itens_produtos">
+              <MappingFragment StoreEntitySet="tabela_itens_produtos">
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+                <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_mesas">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_mesas">
+              <MappingFragment StoreEntitySet="tabela_mesas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="capacidade" ColumnName="capacidade" />
+                <ScalarProperty Name="disponivel" ColumnName="disponivel" />
+                <ScalarProperty Name="observacao" ColumnName="observacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_pedidos">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_pedidos">
+              <MappingFragment StoreEntitySet="tabela_pedidos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="id_mesa" ColumnName="id_mesa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_produto">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_produto">
+              <MappingFragment StoreEntitySet="tabela_produto">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="preco" ColumnName="preco" />
+                <ScalarProperty Name="id_identificacao" ColumnName="id_identificacao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_tipo_pessoa">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_tipo_pessoa">
+              <MappingFragment StoreEntitySet="tabela_tipo_pessoa">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipo_pessoa" ColumnName="tipo_pessoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_tipo_usuario">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_tipo_usuario">
+              <MappingFragment StoreEntitySet="tabela_tipo_usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabela_usuario">
+            <EntityTypeMapping TypeName="billy_jackModel.tabela_usuario">
+              <MappingFragment StoreEntitySet="tabela_usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
